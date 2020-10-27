@@ -2,10 +2,17 @@
   include './connection/connection.php';
   $sql= "SELECT * FROM `".TABLE."`ORDER BY `sr_no` DESC LIMIT 20";
   $fetchall = mysqli_query($mysql, $sql);
-  $listing = mysqli_fetch_all($fetchall, MYSQLI_ASSOC);
-  // echo"<pre>";
-  //   print_r($listing);
-  // echo"<pre>";
+  $listing  = mysqli_fetch_all($fetchall, MYSQLI_ASSOC);
+  
+  if(isset($_GET['task'] )&& ($_GET['task']) == 'delete'){
+  $delete = "DELETE FROM `".TABLE."` WHERE `username`=".$_GET['username'];
+  $dquery = mysqli_query($mysql, $delete);
+  if($dquery== true){
+    echo "Record deleted succesfully";
+  }else{
+    echo "there is an error to delete record";
+  }
+}
 ?>
 <form method="post">
   <style>
@@ -42,11 +49,10 @@
         <td><?php echo $value['username']; ?></td>
         <td><?php echo $value['email']; ?></td>
         <td><a href= "edit.php?id= <?php echo $value ['username']; ?>">Edit </a>
-        <a href="edit.php?id=<?php echo $value['username']; ?>&task=delete">Delete</a>
+        <a href="listing.php?id=<?php echo $value['username']; ?>&task=delete">Delete</a>
       </tr> 
       <?php 
       } 
-      //} 
       ?>  
     </tbody>
   </table>

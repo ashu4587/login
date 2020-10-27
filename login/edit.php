@@ -1,10 +1,10 @@
 <?php
   include './connection/connection.php';
-  $firstname = $_POST['firstname'];
-  $lastname  = $_POST['lastname'];
-  $email     = $_POST['email'];
+  // $firstname = $_POST['firstname'];
+  // $lastname  = $_POST['lastname'];
+  // $email     = $_POST['email'];
   if(isset($_POST['update'])){
-  $update    = "UPDATE `".TABLE."` SET `firstname`='".$firstname."', `lastname`='".$lastname."', `email`='".$email."' WHERE `username`=".$_GET['username'];
+  $update    = "UPDATE `".TABLE."` SET `firstname`='".$_POST['firstname']."' , `lastname`='".$_POST['lastname']."' ,`email`='".$_POST['email']."' WHERE `username`=".$_GET['username'];  
   $updatecheck= mysqli_query($mysql, $update);
   if($updatecheck == false){
     echo "There is an error in updating data";
@@ -29,11 +29,7 @@
       <input type= "text" class= "form-control" name="lastname"  placeholder= "Enter your last name here" value=""><br>
       <?php //echo $errorhandling2; ?>
     </div></br>
-    <div class="form-group">
-      <label for="username">Username</label>
-      <input type= "text" class= "form-control" name="username"  placeholder= "Enter your username here" value="">
-    </div></br></br>
-    <div class="form-group">
+   
       <label for="email">Email</label>
       <input type= "text" class= "form-control" name="email"  placeholder= "Enter your email here" value="">
     </div></br></br>

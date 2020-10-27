@@ -6,11 +6,12 @@
 
     <div class="container">
       <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="username" required >
+      <input type="text" placeholder="Enter Username" name="username">
+      <?php echo "$errorhandling"; ?> </br>
 
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required >
-
+      <input type="password" placeholder="Enter Password" name="password">
+      <?php echo "$errorhandling2"; ?> </br>
       <button type= "submit" class= "btn btn-primary" name="login"   value="submit">Login</button>
     </div>
 
